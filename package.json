@@ -8,6 +8,9 @@
     "example": "bun run example.ts",
     "advanced-examples": "bun run advanced-examples.ts",
     "interactive": "bun run interactive.ts",
+    "browser": "bun run browser-example.ts",
+    "browser-test": "bun run browser-example.ts --test-formats",
+    "cli": "bun run cli.ts",
     "setup": "bun run setup.ts",
     "verify": "bun run setup.ts verify",
     "clean": "bun run setup.ts clean",
@@ -21,12 +24,16 @@
   },
   "packageManager": "bun@1.2.2",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@tailwindcss/postcss": "^4.1.8",
+    "@types/bun": "latest",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^4.1.8"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
+    "commander": "^14.0.0",
     "consola": "^3.4.2",
     "openai": "^5.0.1",
     "sharp": "^0.34.2"

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flyer Template - PromoMaker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./globals.css" rel="stylesheet" />
+  </head>
+  <body class="bg-gradient-to-br from-primary-50 to-secondary-50 p-8">
+    <div class="flyer-container max-w-2xl mx-auto w-[600px] h-[600px]">
+      <!-- Header with gradient background -->
+      <div class="flyer-header p-8 text-center relative overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-primary-600 to-secondary-600 opacity-90"
+        ></div>
+        <div class="relative z-10">
+          <div
+            class="w-20 h-20 bg-white rounded-full mx-auto mb-4 flex items-center justify-center business-logo"
+          >
+            <span class="text-2xl font-bold text-primary-700">R</span>
+          </div>
+          <h1 class="text-3xl font-heading font-bold text-white mb-2">
+            ¡Oferta Especial!
+          </h1>
+          <div class="offer-badge inline-block">
+            <span class="text-lg font-bold">50% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flyer-content space-y-6">
+        <!-- Product Description -->
+        <div class="text-center">
+          <h2 class="text-xl font-semibold text-primary-600 mb-3">
+            Pizza Margherita Especial
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Disfruta de nuestra deliciosa Pizza Margherita preparada con
+            ingredientes frescos y masa artesanal. Una experiencia gastronómica
+            única te espera.
+          </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-2 gap-4">
+          <div
+            class="bg-gradient-to-r from-primary-50 to-primary-100 p-4 rounded-lg"
+          >
+            <div class="text-center">
+              <div
+                class="w-12 h-12 bg-primary-500 rounded-full mx-auto mb-2 flex items-center justify-center"
+              >
+                <span class="text-xl">🎯</span>
+              </div>
+              <h3 class="font-semibold text-primary-700">Calidad Premium</h3>
+            </div>
+          </div>
+          <div
+            class="bg-gradient-to-r from-secondary-50 to-secondary-100 p-4 rounded-lg"
+          >
+            <div class="text-center">
+              <div
+                class="w-12 h-12 bg-secondary-500 rounded-full mx-auto mb-2 flex items-center justify-center"
+              >
+                <span class="text-xl">⚡</span>
+              </div>
+              <h3 class="font-semibold text-secondary-700">Entrega Rápida</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div
+          class="text-center bg-gradient-to-r from-primary-600 to-secondary-600 p-6 rounded-xl text-white"
+        >
+          <h3 class="text-xl font-bold mb-2">¡Ordena Ahora!</h3>
+          <p class="text-sm opacity-90 mb-4">
+            Válido hasta: 31 de Diciembre 2024
+          </p>
+          <div class="space-y-2">
+            <p class="font-semibold">📞 +56 9 1234 5678</p>
+            <p class="text-sm">📍 Av. Providencia 123, Santiago</p>
+            <p class="text-sm">🕒 Lun-Dom 11:00-23:00</p>
+          </div>
+        </div>
+
+        <!-- Business Type Badge -->
+        <div class="text-center">
+          <span
+            class="inline-block bg-gray-100 text-primary-600 px-4 py-2 rounded-full text-sm font-medium"
+          >
+            Restaurante
+          </span>
+        </div>
+      </div>
+
+      <!-- Decorative Elements -->
+      <div
+        class="absolute top-4 right-4 w-16 h-16 bg-primary-500 rounded-full opacity-20 animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute bottom-4 left-4 w-12 h-12 bg-secondary-300 rounded-full opacity-20 animate-bounce-gentle"
+      ></div>
+    </div>
+  </body>
+</html>

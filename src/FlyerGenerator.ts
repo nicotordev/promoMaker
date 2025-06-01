@@ -32,12 +32,14 @@ export class FlyerGenerator {
    *
    * @param config - Detailed promotional configuration (product, offer, colors, sizes).
    * @param quantity - Number of flyer variations to generate.
+   * @param language - Language for text generation (default: 'English').
    * @returns A promise that resolves with an array of GeneratedFlyer objects.
    * @throws Error if text variations could not be generated.
    */
   async generateVariations(
     config: PromoConfig,
-    quantity: number
+    quantity: number,
+    language: string = 'English'
   ): Promise<GeneratedFlyer[]> {
     consola.info(`🚀 Starting generation of ${quantity} promotional flyers.`);
 
@@ -47,7 +49,8 @@ export class FlyerGenerator {
     // Generate text variations using TextGenerator.
     const textVariations = await this.textGenerator.generateVariations(
       config,
-      quantity
+      quantity,
+      language
     );
 
     if (textVariations.length === 0) {
@@ -128,11 +131,13 @@ export class FlyerGenerator {
    *
    * @param config - Detailed promotional configuration.
    * @param quantity - Number of text variations to generate per format.
+   * @param language - Language for text generation (default: 'English').
    * @returns A promise that resolves with an array of GeneratedFlyer objects for all formats.
    */
   async generateForAllFormats(
     config: PromoConfig,
-    quantity: number
+    quantity: number,
+    language: string = 'English'
   ): Promise<GeneratedFlyer[]> {
     consola.info(`🚀 Starting flyer generation for ALL social media formats.`);
 
@@ -140,7 +145,8 @@ export class FlyerGenerator {
 
     const textVariations = await this.textGenerator.generateVariations(
       config,
-      quantity
+      quantity,
+      language
     );
 
     if (textVariations.length === 0) {

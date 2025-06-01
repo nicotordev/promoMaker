@@ -5,6 +5,24 @@ import type { PromoConfig } from './src/types';
 
 // Predefined color palettes for different business types
 const colorPalettes = {
+  // NicoTorDev's custom palette (main theme)
+  nicotordev: [
+    '#8B5CF6', // main-600
+    '#EC4899', // secondary-500
+    '#A855F7', // main-500
+    '#F472B6', // secondary-400
+    '#7C3AED', // main-700
+    '#E879F9', // secondary-300
+  ],
+  // Professional/tech palette based on your theme
+  professional: [
+    '#8B5CF6', // main
+    '#6366F1', // indigo
+    '#3B82F6', // blue
+    '#06B6D4', // cyan
+    '#10B981', // emerald
+    '#EC4899', // secondary
+  ],
   restaurant: [
     '#FF6B6B',
     '#4ECDC4',
@@ -84,6 +102,7 @@ interface UserPreferences {
   config: PromoConfig;
   formatChoice: string;
   quantity: number;
+  language: string;
 }
 
 async function promptUser(): Promise<UserPreferences> {
@@ -93,6 +112,26 @@ async function promptUser(): Promise<UserPreferences> {
   );
 
   console.log('\n');
+
+  // Language selection
+  const language = await consola.prompt(
+    '🌐 In which language should I generate the content?',
+    {
+      type: 'select',
+      options: [
+        'English',
+        'Spanish',
+        'French',
+        'German',
+        'Italian',
+        'Portuguese',
+        'Other (will use English as fallback)',
+      ],
+    }
+  );
+
+  const finalLanguage =
+    language === 'Other (will use English as fallback)' ? 'English' : language;
 
   // Product/Service
   const product = await consola.prompt(
@@ -231,13 +270,15 @@ async function promptUser(): Promise<UserPreferences> {
     config,
     formatChoice,
     quantity: Math.min(Math.max(quantityNum, 1), 10),
+    language: finalLanguage,
   };
 }
 
 async function generateFlyers(
   config: PromoConfig,
   formatChoice: string,
-  quantity: number
+  quantity: number,
+  language: string
 ) {
   consola.start('🚀 Starting flyer generation process...');
 
@@ -257,6 +298,7 @@ async function generateFlyers(
 🎨 Colors: ${config.colors.join(', ')}
 📱 Format: ${formatChoice}
 🔢 Quantity: ${quantity}
+🌐 Language: ${language}
   `);
 
   const shouldContinue = await consola.prompt(
@@ -279,17 +321,20 @@ async function generateFlyers(
 
     switch (formatChoice) {
       case 'All formats (Facebook, Instagram, Stories)':
-        flyers = await generator.generateForAllFormats(config, quantity);
+        flyers = await generator.generateForAllFormats(
+          config,
+          quantity,
+          language
+        );
         break;
       case 'Instagram only (1080x1080)':
-        // For single format, we need to modify the generateVariations method or create a new one
-        flyers = await generator.generateVariations(config, quantity);
+        flyers = await generator.generateVariations(config, quantity, language);
         break;
       case 'Stories only (1080x1920)':
-        flyers = await generator.generateVariations(config, quantity);
+        flyers = await generator.generateVariations(config, quantity, language);
         break;
       default: // Facebook only
-        flyers = await generator.generateVariations(config, quantity);
+        flyers = await generator.generateVariations(config, quantity, language);
         break;
     }
 
@@ -346,7 +391,7 @@ async function generateFlyers(
     });
 
     if (retry) {
-      await generateFlyers(config, formatChoice, quantity);
+      await generateFlyers(config, formatChoice, quantity, language);
     }
   }
 }
@@ -381,12 +426,12 @@ Let's get started! 🎉
     console.log('\n');
 
     // Get user preferences
-    const { config, formatChoice, quantity } = await promptUser();
+    const { config, formatChoice, quantity, language } = await promptUser();
 
     console.log('\n');
 
     // Generate flyers
-    await generateFlyers(config, formatChoice, quantity);
+    await generateFlyers(config, formatChoice, quantity, language);
   } catch (error) {
     consola.error('❌ Unexpected error:', error);
   }
