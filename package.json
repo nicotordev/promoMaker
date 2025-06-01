@@ -7,6 +7,7 @@
     "start": "bun run index.ts",
     "example": "bun run example.ts",
     "advanced-examples": "bun run advanced-examples.ts",
+    "interactive": "bun run interactive.ts",
     "setup": "bun run setup.ts",
     "verify": "bun run setup.ts verify",
     "clean": "bun run setup.ts clean",
