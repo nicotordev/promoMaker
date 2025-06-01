@@ -1,0 +1,33 @@
+{
+  "name": "promomaker",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "bun run index.ts",
+    "ejemplo": "bun run ejemplo.ts",
+    "ejemplos-avanzados": "bun run ejemplos-avanzados.ts",
+    "setup": "bun run setup.ts",
+    "verificar": "bun run setup.ts verificar",
+    "limpiar": "bun run setup.ts limpiar",
+    "dev": "bun --watch index.ts",
+    "build": "bun build index.ts --outdir ./dist",
+    "type-check": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "bun": ">=1.2.2"
+  },
+  "packageManager": "bun@1.2.2",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "consola": "^3.4.2",
+    "openai": "^5.0.1",
+    "sharp": "^0.34.2"
+  }
+}
